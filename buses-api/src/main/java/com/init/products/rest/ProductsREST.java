@@ -100,7 +100,7 @@ public class ProductsREST {
 		return ResponseEntity.ok(null);
 	}
 	
-	//MODIFICATION (it needs to be  to allow partial modification)
+	//MODIFICATION (it needs to be updated to allow partial modification)
 	@RequestMapping(value="devices/{deviceId}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> updateDevice(@RequestBody Device dev){
 		Optional<Device> deviceOpt = devicesDAO.findById(dev.getId());
