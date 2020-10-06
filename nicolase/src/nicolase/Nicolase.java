@@ -18,26 +18,21 @@ import java.util.stream.Collectors;
  */
 public class Nicolase {
        
-    public static HashMap<Character, Number> getCaracteresRepetidos(String palabra){
+    public static Map<Character, Long> getCaracteresRepetidos(String palabra){
         
         //chars that are not alphanumeric are removed
         palabra = palabra.replaceAll("[^a-zA-Z0-9]", ""); 
-        HashMap<Character, Number> respuesta = new HashMap<>();
                 
         Map<Character, Long> valores = palabra.toLowerCase().chars().mapToObj(e -> (char)e).
                 collect(Collectors.groupingBy(c -> c, Collectors.counting())).entrySet().stream()
                 .filter(c -> c.getValue() > 1).collect(Collectors.toMap(x -> x.getKey(), x -> x.getValue()));
-        System.out.println(valores);
-                
-        return respuesta;
-        
+        return valores;        
     }
     
     public static Set<String> filtrar(Set<String> palabrasfiltrar, String filtroA){
+    	//filter is modified to simulate contains method using matches method
     	String filtroT = ".*"+ filtroA+ ".*";
-    	return palabrasfiltrar.stream().filter(p ->p.matches(filtroT)).collect(Collectors.toSet());
-        //return palabrasfiltrar.stream().filter(pattern.asPredicate()).collect(Collectors.toSet());
-        
+    	return palabrasfiltrar.stream().filter(p ->p.matches(filtroT)).collect(Collectors.toSet());        
     }
 
 
@@ -64,7 +59,8 @@ public class Nicolase {
         System.out.println(palabras_filtradas);
         System.out.println(palabras_ordenadas);
         
-        getCaracteresRepetidos("EliAAaAa$$a@@@@na11");
+        Map<Character, Long> respuesta = getCaracteresRepetidos("EliAAaAa$$a@@@@na11");
+        System.out.println(respuesta);
         
         
         
