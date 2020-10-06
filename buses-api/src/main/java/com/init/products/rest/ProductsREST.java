@@ -101,7 +101,7 @@ public class ProductsREST {
 	}
 	
 	//MODIFICATION (it needs to be updated to allow partial modification)
-	@RequestMapping(value="devices/{deviceId}", method=RequestMethod.PUT)
+	@RequestMapping(value="devices", method=RequestMethod.PUT)
 	public ResponseEntity<Void> updateDevice(@RequestBody Device dev){
 		Optional<Device> deviceOpt = devicesDAO.findById(dev.getId());
 		if(!deviceOpt.isPresent()) {
@@ -111,7 +111,7 @@ public class ProductsREST {
 		return ResponseEntity.ok(null);	
 	}
 	
-	@RequestMapping(value="buses/{busId}", method=RequestMethod.PUT)
+	@RequestMapping(value="buses", method=RequestMethod.PUT)
 	public ResponseEntity<Void> updateBus(@RequestBody Bus busU){
 		Optional<Bus> busOpt = busesDAO.findById(busU.getId());
 		if(!busOpt.isPresent()) {
